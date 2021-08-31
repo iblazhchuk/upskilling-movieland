@@ -1,7 +1,6 @@
 package dao;
 
 import model.Movie;
-import model.Review;
 
 import java.util.List;
 
