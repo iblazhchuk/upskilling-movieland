@@ -1,6 +1,6 @@
-package dao;
+package org.dao;
 
-import model.Movie;
+import org.model.Movie;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
-package dao;
+package org.dao;
 
-import model.Movie;
 
+import org.model.Review;
 
 import java.util.List;
 
