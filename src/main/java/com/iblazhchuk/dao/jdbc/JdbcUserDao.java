@@ -1,7 +1,7 @@
-package org.dao.jdbc;
+package com.iblazhchuk.dao.jdbc;
 
-import org.dao.UserDao;
-import org.model.User;
+import com.iblazhchuk.dao.UserDao;
+import com.iblazhchuk.model.User;
 
 import java.util.List;
 

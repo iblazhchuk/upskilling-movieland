@@ -1,4 +1,4 @@
-package org.model;
+package com.iblazhchuk.model;
 
 import lombok.*;
 

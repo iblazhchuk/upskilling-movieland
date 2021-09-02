@@ -1,7 +1,7 @@
-package org.dao;
+package com.iblazhchuk.dao;
 
 
-import org.model.Review;
+import com.iblazhchuk.model.Review;
 
 import java.util.List;
 

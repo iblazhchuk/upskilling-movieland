@@ -1,6 +1,6 @@
-package org.dao;
+package com.iblazhchuk.dao;
 
-import org.model.Movie;
+import com.iblazhchuk.model.Movie;
 
 import java.util.List;
 

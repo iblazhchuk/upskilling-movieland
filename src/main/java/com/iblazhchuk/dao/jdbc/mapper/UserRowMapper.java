@@ -1,6 +1,6 @@
-package org.dao.jdbc.mapper;
+package com.iblazhchuk.dao.jdbc.mapper;
 
-import org.model.User;
+import com.iblazhchuk.model.User;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

@@ -1,12 +1,13 @@
-package org.dao.jdbc.mapper;
+package com.iblazhchuk.dao.jdbc.mapper;
 
-import org.model.Movie;
+import com.iblazhchuk.model.Movie;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
+@Component
 public class MovieRowMapper implements RowMapper<Movie> {
 
     @Override

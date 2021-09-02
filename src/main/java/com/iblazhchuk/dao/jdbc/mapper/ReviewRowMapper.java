@@ -1,6 +1,6 @@
-package org.dao.jdbc.mapper;
+package com.iblazhchuk.dao.jdbc.mapper;
 
-import org.model.Review;
+import com.iblazhchuk.model.Review;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
