@@ -11,11 +11,15 @@ import java.util.logging.Logger;
 
 public class DataSource implements javax.sql.DataSource {
 
-    private static HikariConfig config = new HikariConfig();
+    private static HikariConfig config;
     private static HikariDataSource ds;
 
+//    public DataSource(String propertyPath) {
+//         config = new HikariConfig(propertyPath);
+//    }
+
     static {
-        config.setJdbcUrl( "jdbc:mariadb://localhost:3306/local_db" );
+        config.setJdbcUrl( "jdbc:mariadb://localhost:3306/db_movieland" );
         config.setUsername( "root" );
         config.setPassword( "root" );
         config.addDataSourceProperty( "cachePrepStmts" , "true" );

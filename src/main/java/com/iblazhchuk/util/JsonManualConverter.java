@@ -5,6 +5,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class JsonManualConverter {
     private final Logger log = LoggerFactory.getLogger(getClass());
@@ -27,6 +29,19 @@ public class JsonManualConverter {
             }
         }
         json.append("}");
+        log.info("Receiving movie as json {}", json);
+        return json.toString();
+    }
+
+    public String toJson(List<Movie> movies) {
+        log.info("Start converting List<Movie> {} to json", movies);
+        StringBuilder json = new StringBuilder("[");
+        for (Movie movie: movies) {
+            json.append(toJson(movie));
+            json.append(COMMA_SEPARATOR);
+        }
+
+        json.append("]");
         log.info("Receiving movie as json {}", json);
         return json.toString();
     }

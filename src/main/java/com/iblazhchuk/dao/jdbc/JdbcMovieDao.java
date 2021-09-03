@@ -11,18 +11,15 @@ import java.util.List;
 @Service
 public class JdbcMovieDao implements MovieDao {
 
+    private static final String FIND_ALL_MOVIES_QUERY = "SELECT id, name_russian, name_native, years, description, rating, price, picture_path, countries, gentries from movies";
+    private static final String FIND_ONE_MOVIE_BY_ID_QUERY = "SELECT * from movies WHERE id = ?";
 
-    private static final String FIND_ALL_USERS_QUERY = "SELECT id, name_russian, name_native, years, description, rating, price, picture_path, countries, gentries from movies";
-//    private static final String FIND_ONE_USER_BY_USERNAME_QUERY = "SELECT * from users WHERE name = ?";
-//    private static final String IS_USER_EXIST_QUERY = "SELECT count(*) FROM users where name = ? AND hash_password = ?";
-//    private static final String ADD_USER_QUERY = "INSERT INTO users (name, role, hash_password, salt) values (?, ?, ?, ?)";
+//    private static final String ADD_MOVIE_QUERY = "INSERT INTO users (name, role, hash_password, salt) values (?, ?, ?, ?)";
 //    private static final String DELETE_USER_QUERY = "DELETE FROM users WHERE name = ? AND hash_password = ? AND role = ?";
 //    private static final String UPDATE_USER_QUERY = "UPDATE users SET hash_password = ?, salt = ?, role = ?  WHERE name = ?";
 
-
     private final JdbcTemplate jdbcTemplate;
     private final MovieRowMapper movieRowMapper;
-
 
     public JdbcMovieDao(JdbcTemplate jdbcTemplate, MovieRowMapper movie_row_mapper) {
         this.jdbcTemplate = jdbcTemplate;
@@ -32,7 +29,8 @@ public class JdbcMovieDao implements MovieDao {
     @Override
     public List<Movie> findAll() {
 
-        return jdbcTemplate.query(FIND_ALL_USERS_QUERY, movieRowMapper);
+        return jdbcTemplate.query(FIND_ALL_MOVIES_QUERY, movieRowMapper);
+
     }
 
     @Override
