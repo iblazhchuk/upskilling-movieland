@@ -13,14 +13,21 @@
 
     <context:component-scan base-package="com.iblazhchuk"/>
 
-<!--    <bean id="jdbcMovieDao" class="com.iblazhchuk.dao.jdbc.JdbcMovieDao"> </bean>-->
+    <context:property-placeholder location="classpath:application.properties"/>
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <constructor-arg ref="dataSource"/>
     </bean>
 
-    <bean id="dataSource" class="com.iblazhchuk.dao.DataSource">
-        <constructor-arg value="application.properties"/>
+    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
+        <constructor-arg ref="hikariConfig"/>
+    </bean>
+
+    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+        <property name="driverClassName" value="${dataSource.jdbcdriverclassName}"/>
+        <property name="jdbcUrl" value="${dataSource.jdbcurl}"/>
+        <property name="username" value="${dataSource.databaseusername}"/>
+        <property name="password" value="${dataSource.databasepassword}"/>
     </bean>
 
     <mvc:annotation-driven/>
