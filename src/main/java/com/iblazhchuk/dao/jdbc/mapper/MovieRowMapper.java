@@ -16,13 +16,10 @@ public class MovieRowMapper implements RowMapper<Movie> {
                 resultSet.getLong("id"),
                 resultSet.getString("name_russian"),
                 resultSet.getString("name_native"),
-                resultSet.getDate("years").toLocalDate(),
-                resultSet.getString("description"),
+                resultSet.getDate("year").toLocalDate(),
                 resultSet.getDouble("rating"),
                 resultSet.getDouble("price"),
-                resultSet.getString("picture_path"),
-                resultSet.getString("countries"),
-                resultSet.getString("gentries")
+                resultSet.getString("picture_path")
         );
     }
 }

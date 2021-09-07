@@ -22,19 +22,19 @@
                 <version>10.0.6</version>
             </plugin>
 
-<!--            <plugin>-->
-<!--                <groupId>org.flywaydb</groupId>-->
-<!--                <artifactId>flyway-maven-plugin</artifactId>-->
-<!--                <version>7.13.0</version>-->
-<!--                <configuration>-->
-<!--                    <url>jdbc:mariadb://localhost:3306/local_db</url>-->
-<!--                    <user>local_user</user>-->
-<!--                    <password>local_password</password>-->
-<!--                    <schemas>-->
-<!--                        <schema>local_db</schema>-->
-<!--                    </schemas>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>7.13.0</version>
+                <configuration>
+                    <url>jdbc:mariadb://localhost:3306/db_movieland</url>
+                    <user>root</user>
+                    <password>root</password>
+                    <schemas>
+                        <schema>db_movieland</schema>
+                    </schemas>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -64,13 +64,37 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.12.5</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.12.5</version>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.20</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>5.3.9</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.7.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>3.12.4</version>
+            <scope>test</scope>
+        </dependency>
+
+
     </dependencies>
 
 </project>

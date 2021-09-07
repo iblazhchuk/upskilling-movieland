@@ -11,12 +11,7 @@ import java.util.List;
 @Service
 public class JdbcMovieDao implements MovieDao {
 
-    private static final String FIND_ALL_MOVIES_QUERY = "SELECT id, name_russian, name_native, years, description, rating, price, picture_path, countries, gentries from movies";
-    private static final String FIND_ONE_MOVIE_BY_ID_QUERY = "SELECT * from movies WHERE id = ?";
-
-//    private static final String ADD_MOVIE_QUERY = "INSERT INTO users (name, role, hash_password, salt) values (?, ?, ?, ?)";
-//    private static final String DELETE_USER_QUERY = "DELETE FROM users WHERE name = ? AND hash_password = ? AND role = ?";
-//    private static final String UPDATE_USER_QUERY = "UPDATE users SET hash_password = ?, salt = ?, role = ?  WHERE name = ?";
+    private static final String FIND_ALL_MOVIES_QUERY = "SELECT id, name_russian, name_native, year, rating, price, picture_path from movies";
 
     private final JdbcTemplate jdbcTemplate;
     private final MovieRowMapper movieRowMapper;
