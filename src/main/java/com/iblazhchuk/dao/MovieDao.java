@@ -8,6 +8,8 @@ public interface MovieDao {
 
     List<Movie> findAll();
 
+    List<Movie> getRandom(int amount);
+
     Movie findOneById (long id);
 
     void add(Movie movie);

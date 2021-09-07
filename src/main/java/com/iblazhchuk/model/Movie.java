@@ -20,7 +20,6 @@ public class Movie {
     private Double price;
     private String picturePath;
 
-
     public Movie(String nameRussian, String nameNative, LocalDate year, Double rating,
                  Double price, String picturePath) {
 

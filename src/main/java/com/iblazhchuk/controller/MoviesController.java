@@ -5,7 +5,9 @@ import com.iblazhchuk.service.MoviesService;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -26,4 +28,9 @@ public class MoviesController {
              return moviesService.getAll();
     }
 
+    @RequestMapping(path = "/movies/random{amount}")
+    @ResponseBody
+    public List<Movie> getRandom (@PathVariable(required = false) String amount) {
+        return moviesService.getRandom(amount);
+    }
 }

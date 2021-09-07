@@ -11,7 +11,10 @@ import java.util.List;
 @Service
 public class JdbcMovieDao implements MovieDao {
 
-    private static final String FIND_ALL_MOVIES_QUERY = "SELECT id, name_russian, name_native, year, rating, price, picture_path from movies";
+    private static final String FIND_ALL_MOVIES_QUERY =
+         "SELECT id, name_russian, name_native, year, rating, price, picture_path from movies";
+    private static final String FIND_RANDOM_MOVIES_QUERY =
+         "SELECT id, name_russian, name_native, year, rating, price, picture_path from movies order by rand() limit ?";
 
     private final JdbcTemplate jdbcTemplate;
     private final MovieRowMapper movieRowMapper;
@@ -23,9 +26,12 @@ public class JdbcMovieDao implements MovieDao {
 
     @Override
     public List<Movie> findAll() {
-
         return jdbcTemplate.query(FIND_ALL_MOVIES_QUERY, movieRowMapper);
+    }
 
+    @Override
+    public List<Movie> getRandom(int amount) {
+        return jdbcTemplate.query(FIND_RANDOM_MOVIES_QUERY, movieRowMapper, amount);
     }
 
     @Override
