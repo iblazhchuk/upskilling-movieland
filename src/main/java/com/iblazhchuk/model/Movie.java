@@ -5,7 +5,7 @@ import lombok.*;
 
 import java.time.LocalDate;
 
-@Data
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
@@ -20,14 +20,4 @@ public class Movie {
     private Double price;
     private String picturePath;
 
-    public Movie(String nameRussian, String nameNative, LocalDate year, Double rating,
-                 Double price, String picturePath) {
-
-        this.nameRussian = nameRussian;
-        this.nameNative = nameNative;
-        this.year = year;
-        this.rating = rating;
-        this.price = price;
-        this.picturePath = picturePath;
-    }
 }

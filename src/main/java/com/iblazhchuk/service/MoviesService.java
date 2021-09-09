@@ -21,12 +21,8 @@ public class MoviesService {
         return jdbcMovieDao.findAll();
     }
 
-    public List<Movie> getRandom (String amount) {
+    public List<Movie> getRandom (int amount) {
 
-        if (amount.isEmpty()) {
-            return jdbcMovieDao.getRandom(MAGIC_AMOUNT_RANDOM_MOVIES);
-        }
-
-        return jdbcMovieDao.getRandom(Integer.parseInt(amount));
+        return jdbcMovieDao.getRandom(amount);
     }
 }
