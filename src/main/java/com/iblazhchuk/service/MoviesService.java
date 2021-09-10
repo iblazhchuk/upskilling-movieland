@@ -1,5 +1,6 @@
 package com.iblazhchuk.service;
 
+import com.iblazhchuk.dao.MovieDao;
 import com.iblazhchuk.dao.jdbc.JdbcMovieDao;
 import com.iblazhchuk.model.Movie;
 import org.springframework.stereotype.Service;
@@ -9,20 +10,18 @@ import java.util.List;
 @Service
 public class MoviesService {
 
-    private final int MAGIC_AMOUNT_RANDOM_MOVIES = 3;
+    private final com.iblazhchuk.dao.MovieDao MovieDao;
 
-    private final JdbcMovieDao jdbcMovieDao;
-
-    public MoviesService(JdbcMovieDao jdbcMovieDao) {
-        this.jdbcMovieDao = jdbcMovieDao;
+    public MoviesService(MovieDao MovieDao) {
+        this.MovieDao = MovieDao;
     }
 
     public List<Movie> getAll() {
-        return jdbcMovieDao.findAll();
+        return MovieDao.findAll();
     }
 
     public List<Movie> getRandom (int amount) {
 
-        return jdbcMovieDao.getRandom(amount);
+        return MovieDao.getRandom(amount);
     }
 }
