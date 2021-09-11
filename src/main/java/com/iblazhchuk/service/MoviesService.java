@@ -1,7 +1,6 @@
 package com.iblazhchuk.service;
 
 import com.iblazhchuk.dao.MovieDao;
-import com.iblazhchuk.dao.jdbc.JdbcMovieDao;
 import com.iblazhchuk.model.Movie;
 import org.springframework.stereotype.Service;
 

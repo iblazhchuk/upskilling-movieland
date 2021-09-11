@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping(path = "/api/v1", produces = MediaType.APPLICATION_JSON_VALUE+";charset=UTF-8")
+@RequestMapping(path = "/api/v1", produces = MediaType.APPLICATION_JSON_VALUE)
 public class MoviesController {
 
     private final MoviesService moviesService;
