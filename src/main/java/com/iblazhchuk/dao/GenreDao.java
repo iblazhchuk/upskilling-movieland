@@ -8,6 +8,4 @@ public interface GenreDao {
 
     List<Genre> findAll();
 
-    Genre findOneById(int id);
-
 }

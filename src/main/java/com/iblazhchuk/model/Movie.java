@@ -19,5 +19,4 @@ public class Movie {
     private Double rating;
     private Double price;
     private String picturePath;
-
 }

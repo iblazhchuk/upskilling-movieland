@@ -44,24 +44,4 @@ public class JdbcMovieDao implements MovieDao {
     public List<Movie> findAllByGenre(long genreId) {
         return  jdbcTemplate.query(FIND_ALL_MOVIES_BY_GENRE_QUERY, movieRowMapper, genreId);
     }
-
-    @Override
-    public Movie findOneById(long id) {
-        return null;
-    }
-
-    @Override
-    public void add(Movie movie) {
-
-    }
-
-    @Override
-    public void edit(Movie movie) {
-
-    }
-
-    @Override
-    public void removeById(long id) {
-
-    }
 }

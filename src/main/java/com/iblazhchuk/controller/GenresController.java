@@ -1,7 +1,6 @@
 package com.iblazhchuk.controller;
 
 import com.iblazhchuk.model.Genre;
-import com.iblazhchuk.model.Movie;
 import com.iblazhchuk.service.GenresService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
