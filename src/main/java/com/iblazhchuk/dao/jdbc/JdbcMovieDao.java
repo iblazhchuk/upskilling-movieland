@@ -3,12 +3,14 @@ package com.iblazhchuk.dao.jdbc;
 import com.iblazhchuk.dao.MovieDao;
 import com.iblazhchuk.dao.jdbc.mapper.MovieRowMapper;
 import com.iblazhchuk.model.Movie;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Slf4j
 public class JdbcMovieDao implements MovieDao {
 
     private static final String FIND_ALL_MOVIES_QUERY =
@@ -26,11 +28,13 @@ public class JdbcMovieDao implements MovieDao {
 
     @Override
     public List<Movie> findAll() {
+        log.info("findAll movies in {}", this);
         return jdbcTemplate.query(FIND_ALL_MOVIES_QUERY, movieRowMapper);
     }
 
     @Override
     public List<Movie> getRandom(int amount) {
+        log.info("getRandom({}) movies in {}", amount, this);
         return jdbcTemplate.query(FIND_RANDOM_MOVIES_QUERY, movieRowMapper, amount);
     }
 
