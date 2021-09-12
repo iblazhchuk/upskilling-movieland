@@ -6,6 +6,7 @@ import com.iblazhchuk.service.MoviesService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -35,5 +36,12 @@ public class MoviesController {
     public List<Movie> getRandom (@RequestParam (defaultValue = "3") String amount) {
         log.info("request getRandom({}) movies in {}", amount, this);
         return moviesService.getRandom(Integer.parseInt(amount));
+    }
+
+    @RequestMapping(path = "/movies/genre/{genreId}")
+    @ResponseBody
+    public List<Movie> getMoviesByGenres (@PathVariable String genreId) {
+        log.info("request getRandom({}) movies in {}", genreId, this);
+        return moviesService.getMoviesByGenres(Long.parseLong(genreId));
     }
 }

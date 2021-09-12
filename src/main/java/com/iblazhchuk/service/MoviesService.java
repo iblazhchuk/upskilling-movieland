@@ -1,29 +1,15 @@
 package com.iblazhchuk.service;
 
-import com.iblazhchuk.dao.MovieDao;
 import com.iblazhchuk.model.Movie;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-@Slf4j
-public class MoviesService {
+public interface MoviesService {
 
-    private final com.iblazhchuk.dao.MovieDao MovieDao;
+    List<Movie> getAll();
 
-    public MoviesService(MovieDao MovieDao) {
-        this.MovieDao = MovieDao;
-    }
+    List<Movie> getRandom (int amount);
 
-    public List<Movie> getAll() {
-        log.info("getAll movies in {}", this);
-        return MovieDao.findAll();
-    }
+    List<Movie> getMoviesByGenres (long genreId);
 
-    public List<Movie> getRandom (int amount) {
-        log.info("getRandom({}) movies in {}", amount, this);
-        return MovieDao.getRandom(amount);
-    }
 }

@@ -17,6 +17,8 @@ public class JdbcMovieDao implements MovieDao {
          "SELECT id, name_russian, name_native, year, rating, price, picture_path from movies";
     private static final String FIND_RANDOM_MOVIES_QUERY =
          "SELECT id, name_russian, name_native, year, rating, price, picture_path from movies order by rand() limit ?";
+    private static final String FIND_ALL_MOVIES_BY_GENRE_QUERY =
+         "SELECT id, name_russian, name_native, year, rating, price, picture_path from movies right join movies_genres mg on movies.id = mg.movie_id where genre_id = ?";
 
     private final JdbcTemplate jdbcTemplate;
     private final MovieRowMapper movieRowMapper;
@@ -36,6 +38,11 @@ public class JdbcMovieDao implements MovieDao {
     public List<Movie> getRandom(int amount) {
         log.info("getRandom({}) movies in {}", amount, this);
         return jdbcTemplate.query(FIND_RANDOM_MOVIES_QUERY, movieRowMapper, amount);
+    }
+
+    @Override
+    public List<Movie> findAllByGenre(long genreId) {
+        return  jdbcTemplate.query(FIND_ALL_MOVIES_BY_GENRE_QUERY, movieRowMapper, genreId);
     }
 
     @Override

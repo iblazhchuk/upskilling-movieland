@@ -1,7 +1,7 @@
 package com.iblazhchuk.controller;
 
 import com.iblazhchuk.model.Movie;
-import com.iblazhchuk.service.MoviesService;
+import com.iblazhchuk.service.MoviesServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class MoviesControllerTest {
 
     private MockMvc mockMvc;
-    private MoviesService moviesService;
+    private MoviesServiceImpl moviesService;
 
     Movie movieStarWarsV = new Movie(
             1L, "Звёздные войны: Эпизод 5 – Империя наносит ответный удар",
@@ -51,7 +51,7 @@ class MoviesControllerTest {
 
     @BeforeEach
     void setUp() {
-        this.moviesService = mock(MoviesService.class);
+        this.moviesService = mock(MoviesServiceImpl.class);
         this.mockMvc = MockMvcBuilders.standaloneSetup(new MoviesController(moviesService)).build();
     }
 
@@ -190,4 +190,43 @@ class MoviesControllerTest {
         verify(moviesService, times(1)).getRandom(3);
         verifyNoMoreInteractions(moviesService);
     }
+
+    @Test
+    void testGetMoviesByGenreId() throws Exception {
+        List<Movie> movies = new ArrayList<>();
+        movies.add(movieTitanic);
+        movies.add(movieGladiator);
+        movies.add(movieTheGreenMile);
+
+        when(moviesService.getMoviesByGenres(1)).thenReturn(movies);
+
+        this.mockMvc.perform(get("/api/v1/movies/genre/1").accept(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].id").value(2))
+                .andExpect(jsonPath("$[0].nameRussian").value("Титаник"))
+                .andExpect(jsonPath("$[0].nameNative").value("Titanic"))
+                .andExpect(jsonPath("$[0].year").value("1997"))
+                .andExpect(jsonPath("$[0].rating").value("7.9"))
+                .andExpect(jsonPath("$[0].price").value("150.0"))
+                .andExpect(jsonPath("$[0].picturePath").value("https://images202.jpg"))
+                .andExpect(jsonPath("$[1].id").value(3))
+                .andExpect(jsonPath("$[1].nameRussian").value("Гладиатор"))
+                .andExpect(jsonPath("$[1].nameNative").value("Gladiator"))
+                .andExpect(jsonPath("$[1].year").value("2000"))
+                .andExpect(jsonPath("$[1].rating").value("8.6"))
+                .andExpect(jsonPath("$[1].price").value("175.0"))
+                .andExpect(jsonPath("$[1].picturePath").value("https://images203.jpg"))
+                .andExpect(jsonPath("$[2].id").value(4))
+                .andExpect(jsonPath("$[2].nameRussian").value("Зеленая миля"))
+                .andExpect(jsonPath("$[2].nameNative").value("The Green Mile"))
+                .andExpect(jsonPath("$[2].year").value("1999"))
+                .andExpect(jsonPath("$[2].rating").value("8.9"))
+                .andExpect(jsonPath("$[2].price").value("134.67"))
+                .andExpect(jsonPath("$[2].picturePath").value("https://images204.jpg"))
+        ;
+        verify(moviesService, times(1)).getMoviesByGenres(1);
+        verifyNoMoreInteractions(moviesService);
+    }
+
+
 }
